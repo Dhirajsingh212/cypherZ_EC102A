@@ -1,4 +1,4 @@
-export default tmpData = [
+const tmpData = [
   {
     id: 1,
     title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -206,3 +206,5 @@ export default tmpData = [
     rating: { rate: 3.6, count: 145 },
   },
 ];
+
+export default tmpData;

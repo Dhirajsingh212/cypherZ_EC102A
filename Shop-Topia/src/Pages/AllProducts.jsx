@@ -11,7 +11,7 @@ const AllProducts = () => {
       <div>
         <PageNavbar />
       </div>
-      <div className="flex flex-col gap-4 px-4 md:px-16 py-24 max-sm:pt-48 ">
+      <div className="flex flex-col gap-4 px-4 md:px-16 py-40 max-sm:pt-64 ">
         <div className="self-end">
           <SideBar />
         </div>

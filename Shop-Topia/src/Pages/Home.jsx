@@ -3,6 +3,7 @@ import { Headers } from "../Components/Header/Headers";
 import Products from "../Components/Products/Products";
 import Coursel from "../Components/Coursel/Coursel";
 import Footer from "../Components/Footer/Footer";
+import Users from "../Components/Users/Users";
 
 const Home = () => {
   return (
@@ -10,6 +11,8 @@ const Home = () => {
       <Headers />
       <Products />
       <Coursel />
+
+      <Users />
       <Footer />
     </div>
   );

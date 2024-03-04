@@ -1,3 +1,5 @@
+import tempData from "./MockData";
+
 export async function fetchData() {
   const res = await fetch("https://fakestoreapi.com/products");
   const data = await res.json();
@@ -8,14 +10,14 @@ export async function fetchData() {
 export default function getData() {
   const data = sessionStorage.getItem("data")
     ? JSON.parse(sessionStorage.getItem("data"))
-    : [];
+    : tempData;
   return data;
 }
 
 export function SearchData(query) {
   let data = sessionStorage.getItem("data")
     ? JSON.parse(sessionStorage.getItem("data"))
-    : [];
+    : tempData;
 
   data = data.filter((item) => {
     return item.title.toLowerCase().includes(query.trim().toLowerCase());

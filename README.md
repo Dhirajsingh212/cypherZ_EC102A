@@ -56,23 +56,23 @@ now you are got to go for hacking !!
 
 ## Features
 
--Good UI:
+Good UI:
 
 - An aesthetically pleasing and user-friendly interface that enhances the overall user experience.
 
--Search Functionality:
+Search Functionality:
 
 - A robust search function that allows users to easily find the products they are looking for.
 
--Login/Signup Page:
+Login/Signup Page:
 
 - A secure and convenient way for users to create an account and manage their personal information.
 
--Cart Page:
+Cart Page:
 
 - A feature that enables users to add products to a virtual shopping cart and review their purchases before checkout.
 
--Products Page:
+Products Page:
 
 - A page that displays all the products available for purchase, along with their descriptions, prices, and images.
 

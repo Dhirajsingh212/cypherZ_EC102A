@@ -52,7 +52,7 @@ now you are got to go for hacking !!
 
 # ShopTopia: E-commerce Platform.
 
-**Welcome to Shotptopia, your all-encompassing platform for browsing, purchasing, and indulging in the latest lifestyle trends!** This README file offers an overview of Shotptopia's development and operational fundamentals.
+**Welcome to Shoptopia, your all-encompassing platform for browsing, purchasing, and indulging in the latest lifestyle trends!** This README file offers an overview of Shotptopia's development and operational fundamentals.
 
 ## Features
 

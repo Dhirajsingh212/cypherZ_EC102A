@@ -34,7 +34,7 @@ const AllProducts = () => {
           {data.length > 0 ? (
             data.map((e, index) => {
               return (
-                <div key={index} className="hover:shadow-2xl">
+                <div key={index} className="hover:shadow-2xl rounded-2xl">
                   <div className="card w-full h-full bg-[#ece3ca]">
                     <figure>
                       <img

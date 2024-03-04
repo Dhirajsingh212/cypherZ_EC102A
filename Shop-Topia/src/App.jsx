@@ -10,8 +10,8 @@ import Layout from "./Layout/Layout";
 import { fetchData } from "./Data/Data";
 
 const App = () => {
-  fetchData();
   useEffect(() => {
+    fetchData();
     AOS.init({
       once: false,
       duration: 1000,

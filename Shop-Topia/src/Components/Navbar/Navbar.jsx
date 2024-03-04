@@ -20,7 +20,7 @@ export const Navbar = () => {
               onClick={() => {
                 navigate("/");
               }}
-              className="cursor-pointer font-semibold"
+              className="cursor-pointer font-semibold hover:text-primary"
             >
               Home
             </button>
@@ -28,7 +28,7 @@ export const Navbar = () => {
               onClick={() => {
                 navigate("/products");
               }}
-              className="cursor-pointer font-semibold"
+              className="cursor-pointer font-semibold hover:text-primary"
             >
               Products
             </button>
@@ -36,12 +36,12 @@ export const Navbar = () => {
               onClick={() => {
                 navigate("/cart");
               }}
-              className="cursor-pointer font-semibold"
+              className="cursor-pointer font-semibold hover:text-primary"
             >
               Cart
             </button>
             {/* <button className="cursor-pointer font-semibold">About Us</button> */}
-            <button className="text-cyan-600">+91-8955XXXXXX</button>
+            {/* <button className="text-cyan-600">+91-8955XXXXXX</button> */}
           </ul>
         </div>
         <div className="max-lg:hidden">
@@ -51,7 +51,7 @@ export const Navbar = () => {
                 onClick={() => {
                   navigate("/login");
                 }}
-                className="px-10 py-2 rounded-2xl text-white bg-orange-300 shadow-md"
+                className="active:shadow-sm px-10 py-2 rounded-2xl text-white bg-orange-300 shadow-md"
               >
                 Login
               </button>
@@ -61,7 +61,7 @@ export const Navbar = () => {
                 onClick={() => {
                   navigate("/signup");
                 }}
-                className="px-10 py-2 rounded-2xl text-white bg-yellow-500"
+                className="shadow-md  active:shadow-sm px-10 py-2 rounded-2xl text-white bg-yellow-500"
               >
                 Signup
               </button>

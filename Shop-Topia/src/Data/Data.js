@@ -11,3 +11,14 @@ export default function getData() {
     : [];
   return data;
 }
+
+export function SearchData(query) {
+  let data = sessionStorage.getItem("data")
+    ? JSON.parse(sessionStorage.getItem("data"))
+    : [];
+
+  data = data.filter((item) => {
+    return item.title.toLowerCase().includes(query.trim().toLowerCase());
+  });
+  return data;
+}

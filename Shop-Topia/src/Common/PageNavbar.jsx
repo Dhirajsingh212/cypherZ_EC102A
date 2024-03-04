@@ -2,23 +2,30 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../Images/logo1.png";
 
-const PageNavbar = () => {
+const PageNavbar = ({ input, changeHandler }) => {
   const navigate = useNavigate();
   return (
     <div className="max-sm:flex max-sm:flex-col max-sm:gap-4 navbar w-screen bg-transparent backdrop-blur-lg fixed z-50 px-4 md:px-16 py-4">
       <div className="flex-1 max-sm:self-start">
-        <a className="text-xl font-bold italic">
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="text-xl font-bold italic"
+        >
           <img
             src={logo}
             className=" max-sm:h-20 max-sm:w-full h-32 w-32 mix-blend-multiply object-contain"
             alt=""
           />
-        </a>
+        </button>
       </div>
       <div className="form-control">
         <input
           type="text"
           placeholder="Search"
+          value={input}
+          onChange={changeHandler}
           className="input input-bordered w-24 md:w-auto max-sm:w-full"
         />
       </div>
@@ -52,7 +59,7 @@ const PageNavbar = () => {
               <span className="text-info">Subtotal: $999</span>
               <div className="card-actions">
                 <button
-                  className="btn btn-primary btn-block"
+                  className="btn btn-primary text-white btn-block"
                   onClick={() => {
                     navigate("/cart");
                   }}

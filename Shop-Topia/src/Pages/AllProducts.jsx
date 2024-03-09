@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { cartActions } from "../store/store";
 
 const AllProducts = () => {
+  const { token } = useSelector((state) => state.userReducer);
   const { searchProducts, isFetching, isError } = useSelector(
     (state) => state.productsReducer
   );
@@ -48,7 +49,7 @@ const AllProducts = () => {
                         </h2>
                       </div>
                       <p>{e.description.slice(0, 100)}</p>
-                      <div className="card-actions justify-end">
+                      {token && <div className="card-actions justify-end">
                         <button
                           className="btn btn-neutral"
                           onClick={() => {
@@ -69,7 +70,7 @@ const AllProducts = () => {
                         >
                           Add to cart
                         </button>
-                      </div>
+                      </div>}
                     </div>
                   </div>
                 </div>

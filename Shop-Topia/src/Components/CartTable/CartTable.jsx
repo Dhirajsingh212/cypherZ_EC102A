@@ -1,8 +1,10 @@
 import React from "react";
-import getData from "../../Data/Data";
+import { useSelector } from "react-redux";
 
 const CartTable = () => {
-  const data = getData();
+  const { products, isFetching, isError } = useSelector(
+    (state) => state.productsReducer
+  );
   return (
     <div className="overflow-x-auto ">
       <table className="table">
@@ -11,15 +13,15 @@ const CartTable = () => {
           <tr>
             <th>Product</th>
             <th>Price(₹)</th>
-            <th>Quantity</th>
+            <th className="text-center">Quantity</th>
             <th>Total Price(₹)</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
-          {data.length > 0
-            ? data.map((e) => {
+          {products.length > 0
+            ? products.map((e) => {
                 return (
                   <tr>
                     <td>
@@ -40,7 +42,15 @@ const CartTable = () => {
                       </div>
                     </td>
                     <td>{e.price}</td>
-                    <td>10</td>
+                    <td>
+                      <div>
+                        <div className="join">
+                          <button className="join-item btn">-</button>
+                          <p className="join-item btn">10</p>
+                          <button className="join-item btn">+</button>
+                        </div>
+                      </div>
+                    </td>
                     <td>{Math.round(e.price * 10)}</td>
                     <th>
                       <button className="btn btn-ghost btn-xs">Remove</button>
@@ -48,7 +58,7 @@ const CartTable = () => {
                   </tr>
                 );
               })
-            : null}{" "}
+            : null}
         </tbody>
       </table>
     </div>

@@ -40,8 +40,13 @@ export const Navbar = () => {
             >
               Cart
             </button>
-            {/* <button className="cursor-pointer font-semibold">About Us</button> */}
-            {/* <button className="text-cyan-600">+91-8955XXXXXX</button> */}
+            <button className="cursor-pointer">
+              <div className="avatar">
+                <div className="w-10 rounded-full">
+                  <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                </div>
+              </div>
+            </button>
           </ul>
         </div>
         <div className="max-lg:hidden">

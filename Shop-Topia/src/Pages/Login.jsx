@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="">
       <div className="">
         <div className="flex flex-row justify-between  mt-16 md:mt-32 border-x-4 h-[450px] shadow-2xl">
           <div className="max-lg:hidden">
@@ -80,7 +80,7 @@ function Login() {
                     navigate("/signup");
                   }}
                 >
-                  Sign-up
+                  Register
                 </button>
               </div>
             </div>

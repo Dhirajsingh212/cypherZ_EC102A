@@ -52,7 +52,7 @@ now you are got to go for hacking !!
 
 # ShopTopia: E-commerce Platform.
 
-**Welcome to Shoptopia, your all-encompassing platform for browsing, purchasing, and indulging in the latest lifestyle trends!** This README file offers an overview of Shoptopia's development and operational fundamentals.
+**Welcome to Shoptopia, your all-encompassing platform for browsing, purchasing, and indulging in the latest lifestyle trends!** This README file offers an overview of Shotptopia's development and operational fundamentals.
 
 ## Features
 
@@ -96,32 +96,3 @@ To run this project.
   npm install
   npm run dev
 ```
-
-## Video Link
-[https://res.cloudinary.com/djnc80otm/video/upload/v1709548729/bskwwpbwdzvbr8za5xtl.mp4]
-
-## Pictures
-![Screenshot from 2024-03-04 16-21-33](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/9faeff1b-94a5-4d0d-a294-b0757bdfe442)
-
-![Screenshot from 2024-03-04 16-21-45](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/2dd59a1e-be73-4bbe-a2db-83bd84862b76)
-
-![Screenshot from 2024-03-04 16-21-55](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/6b6af813-fef5-429b-9237-5466b984622a)
-
-![Screenshot from 2024-03-04 16-21-58](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/a78894f2-e093-4af6-92fb-8e395f498d3f)
-
-![Screenshot from 2024-03-04 16-22-10](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/954f2ca6-8e62-46cf-a700-5a299579ead8)
-
-![Screenshot from 2024-03-04 16-22-15](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/d949b984-09f4-4da6-bcc7-781d49ab9e3e)
-
-![Screenshot from 2024-03-04 16-22-21](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/5ed7665d-79f7-4e79-9828-6f9929463a0a)
-
-![Screenshot from 2024-03-04 16-22-46](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/c6039988-4b75-4bbb-ad5f-db17635b291e)
-
-![Screenshot from 2024-03-04 16-22-55](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/42b32eca-eb2b-43fc-960b-c3751b5e7b23)
-
-![Screenshot from 2024-03-04 16-23-02](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/e992d833-008e-46e7-8dc2-22a20699c4e0)
-
-
-![Screenshot from 2024-03-04 16-23-07](https://github.com/Dhirajsingh212/cypherZ_EC102A/assets/92836453/11eb2f68-c133-49a9-ae96-7938e53cbdbf)
-
-  

@@ -1,9 +1,15 @@
 import React from "react";
 import ProductsCard from "../ProductsCard/ProductsCard";
-import getData from "../../Data/Data";
+import { useSelector } from "react-redux";
+import ProductsCardSkeleton from "../../Skeleton/ProductsCardSkeleton";
 
 const Products = () => {
-  const data = getData() || [];
+  const { products, isFetching, isError } = useSelector(
+    (state) => state.productsReducer
+  );
+  if (isFetching) {
+    return <ProductsCardSkeleton />;
+  }
   return (
     <div
       className="flex flex-col gap-8"
@@ -17,8 +23,8 @@ const Products = () => {
         data-aos="fade-right"
         className="md:px-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10"
       >
-        {data.length > 0
-          ? data.slice(0, 9).map((e) => {
+        {products.length > 0
+          ? products.slice(0, 100).map((e) => {
               return (
                 <div key={e.id}>
                   <ProductsCard

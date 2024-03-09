@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { productsActions } from "../../store/store";
 
 const SideBar = () => {
+  const dispatch = useDispatch();
+  const [priceFilter, setPriceFilter] = useState("");
+  const changeHandler = (e) => {
+    setPriceFilter(e.target.value);
+  };
+  useEffect(() => {
+    dispatch(productsActions.filterByPrice({ query: priceFilter }));
+  }, [priceFilter]);
   return (
     <div className="drawer drawer-end">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
@@ -22,12 +32,16 @@ const SideBar = () => {
             <a></a>
           </li>
           <li>
-            <select className="select select-bordered w-full max-w-xs">
-              <option disabled selected>
+            <select
+              value={priceFilter}
+              onChange={changeHandler}
+              className="select select-bordered w-full max-w-xs"
+            >
+              <option value="" disabled selected>
                 Filter price
               </option>
-              <option>Low to High</option>
-              <option>High to Low</option>
+              <option value="lowTohigh">Low to High</option>
+              <option value="highTolow">High to Low</option>
             </select>
           </li>
           <li>
@@ -35,8 +49,6 @@ const SideBar = () => {
               <option disabled selected>
                 Select Catagory
               </option>
-              <option>Electronics</option>
-              <option>General</option>
             </select>
           </li>
         </ul>

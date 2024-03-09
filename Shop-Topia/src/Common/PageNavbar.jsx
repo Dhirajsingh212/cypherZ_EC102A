@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import logo from "../Images/logo1.png";
+import { useDispatch } from "react-redux";
+import { productsActions } from "../store/store";
 
-const PageNavbar = ({ input, changeHandler }) => {
+const PageNavbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [input, setInput] = useState("");
+  const changeHandler = (e) => {
+    navigate("/products");
+    setInput(e.target.value);
+  };
+  useEffect(() => {
+    dispatch(productsActions.searchProducts({ query: input }));
+  }, [input]);
   return (
     <div className="max-sm:flex max-sm:flex-col max-sm:gap-4 navbar w-screen bg-transparent backdrop-blur-lg fixed z-50 px-4 md:px-16 py-4">
       <div className="flex-1 max-sm:self-start">
@@ -24,6 +35,7 @@ const PageNavbar = ({ input, changeHandler }) => {
         <input
           type="text"
           placeholder="Search"
+          autoFocus
           value={input}
           onChange={changeHandler}
           className="input input-bordered w-24 md:w-auto max-sm:w-full"

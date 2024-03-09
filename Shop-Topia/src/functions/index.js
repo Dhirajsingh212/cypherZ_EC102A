@@ -1,5 +1,5 @@
 import axios from "axios";
-const base_url = "http://localhost:8000/";
+const base_url = "https://cypherz-ec102a-backend.onrender.com/";
 
 export async function SignupFunction({ email, username, password }) {
   const response = await axios.post(`${base_url}signup`, {

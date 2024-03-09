@@ -3,19 +3,31 @@ import OrderTable from "../Components/OrderTable/OrderTable";
 import { getOrders } from "../functions";
 import { useSelector } from "react-redux";
 import Error from "./Error";
+import Loader from "../Common/Loader";
 
 function MyOrder() {
   const { token } = useSelector((state) => state.userReducer);
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   useEffect(() => {
     getOrders({ token })
       .then((res) => {
         setProducts(res.data.ordersData);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen min-w-screen flex justify-center items-center ">
+        <Loader />
+      </div>
+    );
+  }
+
   if (!token) {
     return <Error />;
   }

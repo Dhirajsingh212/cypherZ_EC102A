@@ -64,6 +64,10 @@ Search Functionality:
 
 - A robust search function that allows users to easily find the products they are looking for.
 
+Filter Functionality:
+
+- A Filter Functionality to filter products based on price.
+
 Login/Signup Page:
 
 - A secure and convenient way for users to create an account and manage their personal information.
@@ -75,6 +79,10 @@ Cart Page:
 Products Page:
 
 - A page that displays all the products available for purchase, along with their descriptions, prices, and images.
+
+Orders Page:
+
+- A page that displays all the previously ordered products.
 
 ## Tech Stack
 

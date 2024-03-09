@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SignupFunction } from "../functions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "../store/store";
+import Loader from "../Common/Loader";
 
 function Signup() {
+  const { isFetching } = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
@@ -41,6 +43,14 @@ function Signup() {
       console.log(err);
     }
   };
+
+  if (isFetching) {
+    return (
+      <div className="min-h-screen min-w-screen flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <div>

@@ -4,11 +4,13 @@ import { updateOrdersFunction } from "../functions";
 import { toast } from "sonner";
 import { cartActions } from "../store/store";
 import Error from "./Error";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { token } = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
   const { cartProducts } = useSelector((state) => state.cartReducer);
+  const navigate = useNavigate();
   if (!token) {
     return <Error />;
   }
@@ -24,6 +26,7 @@ const Cart = () => {
             await updateOrdersFunction({ token, cartProducts });
             toast("Successfully Placed Order");
             dispatch(cartActions.clearCart());
+            navigate("/orders");
           }}
         >
           Checkout

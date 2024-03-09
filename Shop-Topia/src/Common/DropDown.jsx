@@ -1,8 +1,12 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { userActions } from "../store/store";
 
 const DropDown = () => {
+  const { token } = useSelector((state) => state.userReducer);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div className="dropdown dropdown-bottom dropdown-end">
       <div tabIndex={0} role="button" className="btn m-1 bg-yellow-400">
@@ -46,33 +50,63 @@ const DropDown = () => {
         {/* <li>
           <button>About</button>
         </li> */}
-        <li>
-          <button
-            onClick={() => {
-              navigate("/cart");
-            }}
-          >
-            Cart
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Login
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => {
-              navigate("/signup");
-            }}
-          >
-            Signup
-          </button>
-        </li>
+        {token && (
+          <li>
+            <button
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              Cart
+            </button>
+          </li>
+        )}
+        {token && (
+          <li>
+            <button
+              onClick={() => {
+                navigate("/orders");
+              }}
+            >
+              My Orders
+            </button>
+          </li>
+        )}
+        {token && (
+          <li>
+            <button
+              onClick={() => {
+                dispatch(userActions.logout());
+                navigate("/");
+                window.location.reload();
+              }}
+            >
+              Logout
+            </button>
+          </li>
+        )}
+        {!token && (
+          <li>
+            <button
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login
+            </button>
+          </li>
+        )}
+        {!token && (
+          <li>
+            <button
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              Signup
+            </button>
+          </li>
+        )}
       </ul>
     </div>
   );

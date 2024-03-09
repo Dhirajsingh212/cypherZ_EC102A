@@ -64,7 +64,11 @@ export const HeroSection = () => {
             <img src={phone} className="rounded-full h-32 w-32" alt="" />
           </figure>
           <figure className="banner">
-            <img src={banner} className="h-80 w-96 object-cover" alt="" />
+            <img
+              src={banner}
+              className="h-80 w-96 object-cover rounded-2xl"
+              alt=""
+            />
           </figure>
           <figure
             id="earphoneBanner"

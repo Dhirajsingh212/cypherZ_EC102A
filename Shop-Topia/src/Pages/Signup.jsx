@@ -1,8 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { SignupFunction } from "../functions";
+import { useDispatch } from "react-redux";
+import { userActions } from "../store/store";
 
 function Signup() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const usernameHandler = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(userActions.fetchUserStart());
+      const res = await SignupFunction({ email, username, password });
+      console.log(res);
+      dispatch(
+        userActions.fetchUserSuccess({
+          token: res.data.token,
+          isAdmin: res.data.data.isAdmin,
+        })
+      );
+      navigate("/");
+    } catch (err) {
+      dispatch(userActions.fetchUserFail());
+      console.log(err);
+    }
+  };
+
   return (
     <div>
       <div className="">
@@ -37,7 +76,7 @@ function Signup() {
               </svg>
             </button>
             <h1 className="text-center text-3xl font-semibold">Register</h1>
-            <div className="px-4 flex flex-col gap-2">
+            <form onSubmit={submitHandler} className="px-4 flex flex-col gap-2">
               <div className="flex flex-row max-sm:flex-col max-sm:gap-2 gap-8 border-b-2 border-white">
                 <label className="text-xl ">Email ID</label>
                 <input
@@ -45,15 +84,30 @@ function Signup() {
                   type="email"
                   placeholder="Enter your email"
                   required
+                  value={email}
+                  onChange={emailHandler}
+                />
+              </div>
+              <div className="flex flex-row gap-12 max-sm:flex-col max-sm:gap-2 border-b-2 border-white">
+                <label className="text-xl ">Name</label>
+                <input
+                  className="bg-inherit placeholder:text-white focus:outline-none"
+                  type="text"
+                  placeholder="Enter your username"
+                  required
+                  value={username}
+                  onChange={usernameHandler}
                 />
               </div>
               <div className="flex flex-row gap-5 max-sm:flex-col max-sm:gap-2 border-b-2 border-white">
                 <label className="text-xl ">Password</label>
                 <input
                   className="bg-inherit placeholder:text-white focus:outline-none"
-                  type="email"
+                  type="password"
                   placeholder="Enter your password"
                   required
+                  value={password}
+                  onChange={passwordHandler}
                 />
               </div>
               <div className="py-2">
@@ -64,9 +118,6 @@ function Signup() {
                 <button
                   className="bg-red-300 w-full py-2 rounded-md text-center font-medium"
                   type="submit"
-                  onClick={() => {
-                    navigate("/");
-                  }}
                 >
                   REGISTER
                 </button>
@@ -83,7 +134,7 @@ function Signup() {
                   Login
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

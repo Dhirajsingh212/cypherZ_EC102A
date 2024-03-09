@@ -1,16 +1,18 @@
 import SideBar from "../Components/SideBar/SideBar";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ProductsCardSkeleton from "../Skeleton/ProductsCardSkeleton";
 import { toast } from "sonner";
+import { cartActions } from "../store/store";
 
 const AllProducts = () => {
   const { searchProducts, isFetching, isError } = useSelector(
     (state) => state.productsReducer
   );
+  const dispatch = useDispatch();
 
   if (isFetching) {
     return (
-      <div className="md:px-20 px-4 pt-40 max-sm:pt-60 pb-10">
+      <div className="md:px-20 px-4 pt-40 max-sm:pt-44 pb-10">
         <ProductsCardSkeleton />;
       </div>
     );
@@ -18,7 +20,7 @@ const AllProducts = () => {
 
   return (
     <div className="">
-      <div className="flex flex-col gap-4 px-8 md:px-16 py-40 max-sm:pt-64 ">
+      <div className="flex flex-col gap-4 px-8 md:px-16 py-24 max-sm:pt-44 ">
         <div className="self-end">
           <SideBar />
         </div>
@@ -50,6 +52,18 @@ const AllProducts = () => {
                         <button
                           className="btn btn-neutral"
                           onClick={() => {
+                            dispatch(
+                              cartActions.AddToCart([
+                                {
+                                  id: e.id,
+                                  image: e.image,
+                                  title: e.title,
+                                  description: e.description,
+                                  price: e.price,
+                                  quantity: 1,
+                                },
+                              ])
+                            );
                             toast.success("Successfully added");
                           }}
                         >

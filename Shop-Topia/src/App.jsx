@@ -9,6 +9,7 @@ import Layout from "./Layout/Layout";
 import HomeLayout from "./Layout/HomeLayout";
 import ScrollTop from "./Layout/ScrollTop";
 import { Toaster } from "sonner";
+import MyOrder from "./Pages/MyOrder";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
               element={<Layout children={<AllProducts />} />}
             />
             <Route path="/cart" element={<Layout children={<Cart />} />} />
+            <Route path="/orders" element={<Layout children={<MyOrder />} />} />
           </Routes>
         </ScrollTop>
       </BrowserRouter>

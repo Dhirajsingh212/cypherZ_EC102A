@@ -1,6 +1,11 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../store/store";
+import { toast } from "sonner";
 
-const ProductsCard = ({ image, title, description }) => {
+const ProductsCard = ({ image, title, description, price, id }) => {
+  const { token } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
   return (
     <div className="card w-full h-full bg-base-100 shadow-xl">
       <figure>
@@ -21,7 +26,28 @@ const ProductsCard = ({ image, title, description }) => {
           <div className="badge badge-outline">Products</div>
         </div>
         <div className="card-actions justify-center md:justify-end pt-5">
-          <button className="btn btn-neutral">Buy Now</button>
+          {token && (
+            <button
+              className="btn btn-neutral"
+              onClick={() => {
+                dispatch(
+                  cartActions.AddToCart([
+                    {
+                      id,
+                      image,
+                      title,
+                      description,
+                      price,
+                      quantity: 1,
+                    },
+                  ])
+                );
+                toast.success("Added Successfully");
+              }}
+            >
+              Buy Now
+            </button>
+          )}
         </div>
       </div>
     </div>

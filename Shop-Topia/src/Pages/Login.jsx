@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LoginFunction } from "../functions";
+import { useDispatch } from "react-redux";
+import { userActions } from "../store/store";
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const usernameHandler = (e) => {
+    setUsername(e.target.value);
+  };
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await LoginFunction({ username, password });
+      dispatch(
+        userActions.fetchUserSuccess({
+          token: res.data.token,
+          isAdmin: res.data.isAdmin,
+        })
+      );
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="">
       <div className="">
@@ -37,23 +65,27 @@ function Login() {
               </svg>
             </button>
             <h1 className="text-center text-3xl font-semibold">Log in</h1>
-            <div className="px-4 flex flex-col gap-2">
+            <form onSubmit={submitHandler} className="px-4 flex flex-col gap-2">
               <div className="flex flex-row max-sm:flex-col max-sm:gap-2 gap-8 border-b-2 border-white">
-                <label className="text-xl ">Email ID</label>
+                <label className="text-xl ">Name</label>
                 <input
                   className="bg-inherit placeholder:text-white  focus:outline-none"
-                  type="email"
-                  placeholder="Enter your email"
+                  type="text"
+                  placeholder="Enter your username"
                   required
+                  value={username}
+                  onChange={usernameHandler}
                 />
               </div>
               <div className="flex flex-row gap-5 max-sm:flex-col max-sm:gap-2 border-b-2 border-white">
                 <label className="text-xl ">Password</label>
                 <input
                   className="bg-inherit placeholder:text-white focus:outline-none"
-                  type="email"
+                  type="password"
                   placeholder="Enter your password"
                   required
+                  value={password}
+                  onChange={passwordHandler}
                 />
               </div>
               <div className="py-2">
@@ -64,9 +96,6 @@ function Login() {
                 <button
                   className="bg-red-300 w-full py-2 rounded-md text-center font-medium"
                   type="submit"
-                  onClick={() => {
-                    navigate("/");
-                  }}
                 >
                   LOGIN
                 </button>
@@ -83,7 +112,7 @@ function Login() {
                   Register
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

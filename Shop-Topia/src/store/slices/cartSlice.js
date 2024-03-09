@@ -27,12 +27,37 @@ const cartSlice = createSlice({
         "cartProducts",
         JSON.stringify(action.payload.products)
       );
-      sessionStorage.setItem("cartSize", JSON.stringify(action.payload.size));
-      sessionStorage.setItem("cartTotal", JSON.stringify(action.payload.total));
     },
     fetchCartFail(state, action) {
       state.isFetching = false;
       state.isError = true;
+    },
+    AddToCart(state, action) {
+      const prodExists = state.cartProducts.find(
+        (obj) => obj.id === action.payload[0].id
+      );
+
+      if (!prodExists) {
+        state.cartProducts = [...state.cartProducts, ...action.payload];
+        sessionStorage.setItem(
+          "cartProducts",
+          JSON.stringify(state.cartProducts)
+        );
+      }
+    },
+    RemoveFromCart(state, action) {
+      state.cartProducts = state.cartProducts.filter((e) => {
+        return e.id !== action.payload.id;
+      });
+
+      sessionStorage.setItem(
+        "cartProducts",
+        JSON.stringify(state.cartProducts)
+      );
+    },
+    clearCart(state, action) {
+      state.cartProducts = [];
+      sessionStorage.setItem("cartProducts", JSON.stringify([]));
     },
   },
 });

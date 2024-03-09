@@ -1,10 +1,29 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../store/store";
+import { toast } from "sonner";
+import { UpdateCartFunction } from "../../functions";
 
 const CartTable = () => {
-  const { products, isFetching, isError } = useSelector(
-    (state) => state.productsReducer
+  const { cartProducts, isFetching, isError } = useSelector(
+    (state) => state.cartReducer
   );
+  const { token } = useSelector((state) => {
+    return state.userReducer;
+  });
+  useEffect(() => {
+    UpdateCartFunction({ cartProducts })
+      .then((res) => {})
+      .catch();
+  }, [cartProducts]);
+  const dispatch = useDispatch();
+  if (cartProducts.length <= 0) {
+    return (
+      <div className="lg:pb-20 py-5 text-center">
+        <p>No Products Found</p>
+      </div>
+    );
+  }
   return (
     <div className="overflow-x-auto ">
       <table className="table">
@@ -13,15 +32,15 @@ const CartTable = () => {
           <tr>
             <th>Product</th>
             <th>Price(₹)</th>
-            <th className="text-center">Quantity</th>
+            <th>Quantity</th>
             <th>Total Price(₹)</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
-          {products.length > 0
-            ? products.map((e) => {
+          {cartProducts.length > 0
+            ? cartProducts.map((e) => {
                 return (
                   <tr>
                     <td>
@@ -45,15 +64,21 @@ const CartTable = () => {
                     <td>
                       <div>
                         <div className="join">
-                          <button className="join-item btn">-</button>
-                          <p className="join-item btn">10</p>
-                          <button className="join-item btn">+</button>
+                          <p>1</p>
                         </div>
                       </div>
                     </td>
                     <td>{Math.round(e.price * 10)}</td>
                     <th>
-                      <button className="btn btn-ghost btn-xs">Remove</button>
+                      <button
+                        className="btn btn-ghost btn-xs"
+                        onClick={() => {
+                          dispatch(cartActions.RemoveFromCart({ id: e.id }));
+                          toast.success("removed successfully");
+                        }}
+                      >
+                        Remove
+                      </button>
                     </th>
                   </tr>
                 );

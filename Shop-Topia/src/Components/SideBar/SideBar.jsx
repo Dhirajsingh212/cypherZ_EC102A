@@ -35,9 +35,9 @@ const SideBar = () => {
             <select
               value={priceFilter}
               onChange={changeHandler}
-              className="select select-bordered w-full max-w-xs"
+              className="select select-bordered w-full max-w-xs rounded-sm"
             >
-              <option value="" disabled selected>
+              <option className="" value="" disabled selected>
                 Filter price
               </option>
               <option value="lowTohigh">Low to High</option>
@@ -45,7 +45,7 @@ const SideBar = () => {
             </select>
           </li>
           <li>
-            <select className="select select-bordered w-full max-w-xs">
+            <select className="select select-bordered w-full max-w-xs rounded-sm">
               <option disabled selected>
                 Select Catagory
               </option>

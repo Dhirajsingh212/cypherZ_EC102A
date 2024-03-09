@@ -7,7 +7,7 @@ const Products = () => {
   const { products, isFetching, isError } = useSelector(
     (state) => state.productsReducer
   );
-  if (isFetching) {
+  if (isFetching || !products) {
     return <ProductsCardSkeleton />;
   }
   return (

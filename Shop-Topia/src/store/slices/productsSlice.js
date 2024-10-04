@@ -18,12 +18,9 @@ const productsSlice = createSlice({
     },
     fetchProductsSuccess(state, action) {
       state.isFetching = false;
-      state.products = action.payload.products;
+      state.products = action.payload;
       state.isError = false;
-      sessionStorage.setItem(
-        "products",
-        JSON.stringify(action.payload.products)
-      );
+      sessionStorage.setItem("products", JSON.stringify(action.payload));
     },
     fetchProductsFail(state, action) {
       state.isFetching = false;

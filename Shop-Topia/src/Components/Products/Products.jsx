@@ -7,8 +7,7 @@ const Products = () => {
   const { products, isFetching, isError } = useSelector(
     (state) => state.productsReducer
   );
-  console.log(products);
-  if (isFetching || products.length <= 0) {
+  if (isFetching || !products) {
     return <ProductsCardSkeleton />;
   }
   return (
@@ -29,6 +28,7 @@ const Products = () => {
               return (
                 <div key={e.id}>
                   <ProductsCard
+                    key={e.id}
                     title={e.title}
                     image={e.image}
                     description={e.description}

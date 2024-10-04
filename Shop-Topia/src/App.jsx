@@ -18,8 +18,13 @@ const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     const initData = async () => {
-      const data = await fetchData();
-      dispatch(productsActions.fetchProductsSuccess(data));
+      try {
+        dispatch(productsActions.fetchProductsStart());
+        const data = await fetchData();
+        dispatch(productsActions.fetchProductsSuccess(data));
+      } catch (err) {
+        dispatch(productsActions.fetchProductsFail());
+      }
     };
     initData();
   }, []);

@@ -11,12 +11,16 @@ const CartTable = () => {
   const { token } = useSelector((state) => {
     return state.userReducer;
   });
+  const dispatch = useDispatch();
   useEffect(() => {
-    UpdateCartFunction({ cartProducts })
-      .then((res) => {})
+    UpdateCartFunction({ token, cartProducts })
+      .then((res) => {
+        dispatch(
+          cartActions.fetchCartSuccess({ products: res.data.data.products })
+        );
+      })
       .catch();
   }, [cartProducts]);
-  const dispatch = useDispatch();
   if (cartProducts.length <= 0) {
     return (
       <div className="lg:pb-20 py-5 text-center">

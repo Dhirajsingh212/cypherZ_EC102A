@@ -19,6 +19,7 @@ export async function LoginFunction({ username, password }) {
 }
 
 export async function UpdateCartFunction({ token, cartProducts }) {
+  console.log(token);
   const response = await axios.post(
     `${base_url}cart`,
     {

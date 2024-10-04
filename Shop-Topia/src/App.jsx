@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Home from "./Pages/Home";
 import AllProducts from "./Pages/AllProducts";
 import Cart from "./Pages/Cart";
@@ -10,8 +10,15 @@ import HomeLayout from "./Layout/HomeLayout";
 import ScrollTop from "./Layout/ScrollTop";
 import { Toaster } from "sonner";
 import MyOrder from "./Pages/MyOrder";
+import { fetchData } from "./Data/Data";
 
 const App = () => {
+  useEffect(() => {
+    const initData = async () => {
+      await fetchData();
+    };
+    initData();
+  }, []);
   return (
     <>
       <Toaster richColors position="top-center" visibleToasts={3} />

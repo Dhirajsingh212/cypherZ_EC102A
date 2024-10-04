@@ -49,30 +49,28 @@ const AllProducts = () => {
                         </h2>
                       </div>
                       <p>{e.description.slice(0, 100)}</p>
-                      {token && (
-                        <div className="card-actions justify-end">
-                          <button
-                            className="btn btn-neutral"
-                            onClick={() => {
-                              dispatch(
-                                cartActions.AddToCart([
-                                  {
-                                    id: e.id,
-                                    image: e.image,
-                                    title: e.title,
-                                    description: e.description,
-                                    price: e.price,
-                                    quantity: 1,
-                                  },
-                                ])
-                              );
-                              toast.success("Successfully added");
-                            }}
-                          >
-                            Add to cart
-                          </button>
-                        </div>
-                      )}
+                      <div className="card-actions justify-end">
+                        <button
+                          className="btn btn-neutral"
+                          onClick={() => {
+                            dispatch(
+                              cartActions.AddToCart([
+                                {
+                                  id: e.id,
+                                  image: e.image,
+                                  title: e.title,
+                                  description: e.description,
+                                  price: e.price,
+                                  quantity: 1,
+                                },
+                              ])
+                            );
+                            toast.success("Successfully added");
+                          }}
+                        >
+                          Add to cart
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

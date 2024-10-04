@@ -11,11 +11,15 @@ import ScrollTop from "./Layout/ScrollTop";
 import { Toaster } from "sonner";
 import MyOrder from "./Pages/MyOrder";
 import { fetchData } from "./Data/Data";
+import { useDispatch } from "react-redux";
+import { productsActions } from "./store/store";
 
 const App = () => {
+  const dispatch = useDispatch();
   useEffect(() => {
     const initData = async () => {
-      await fetchData();
+      const data = await fetchData();
+      dispatch(productsActions.fetchProductsSuccess(data));
     };
     initData();
   }, []);
